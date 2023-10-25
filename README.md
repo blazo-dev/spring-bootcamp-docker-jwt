@@ -1,6 +1,6 @@
-# Dockerización de una Aplicación Spring Boot con JWT
+# Dockerización de una Aplicación Spring Boot
 
-Este archivo README proporciona una guía paso a paso para dockerizar una aplicación Spring Boot que implementa la autenticación con Spring Security y JWT (JSON Web Tokens). Asegúrate de cumplir con los requisitos y sigue estos pasos para levantar el proyecto en tu entorno.
+Este archivo README proporciona una guía paso a paso para ejecutar una aplicación Spring Boot en docker, que implementa la autenticación con Spring Security y JWT (JSON Web Tokens). Asegúrate de cumplir con los requisitos y sigue estos pasos para levantar el proyecto en tu entorno.
 
 ## Requisitos
 
