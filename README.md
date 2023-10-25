@@ -71,13 +71,13 @@ La aplicación ofrece los siguientes endpoints para la gestión de usuarios y la
 
 Sigue estos pasos para levantar la aplicación Spring Boot y ejecutarla:
 
-**Empaquetar la Aplicación Usando Make**:
+**Correr la aplicación usando make**:
    Si tienes `make` instalado, puedes correr la aplicación con el siguiente comando en la terminal:
 
    ```shell
    make run
    ```
-**Empaquetar la Aplicación Manualmente**:
+**Correr la aplicación manualmente**:
   ```shell
   ./mvnw clean package -DskipTests
   ```
