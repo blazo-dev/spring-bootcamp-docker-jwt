@@ -1,6 +1,6 @@
 # Dockerización de una Aplicación Spring Boot con JWT
 
-Este archivo Readme proporciona una guía paso a paso para dockerizar una aplicación Spring Boot e implementar la autenticación JWT. Asegúrate de cumplir con los requisitos y sigue estos pasos para levantar el proyecto en tu entorno.
+Este archivo README proporciona una guía paso a paso para dockerizar una aplicación Spring Boot que implementa la autenticación con Spring Security y JWT (JSON Web Tokens). Asegúrate de cumplir con los requisitos y sigue estos pasos para levantar el proyecto en tu entorno.
 
 ## Requisitos
 
@@ -11,61 +11,83 @@ Asegúrate de tener los siguientes requisitos instalados en tu sistema:
 - **Docker Compose**: Para simplificar la gestión de contenedores.
 - **IDE**: Un entorno de desarrollo integrado como Visual Studio Code o IntelliJ IDEA para trabajar con el proyecto Spring Boot.
 
+**Opcional** (Requisito para usar `make` en Windows):
+
+- **Make (Opcional)**: Para automatizar la construcción y ejecución de la aplicación con los comandos definidos en el archivo Makefile. Puedes instalar `make` en Windows siguiendo estos pasos:
+    - Instala el administrador de paquetes Chocolatey para Windows: [Instrucciones de instalación de Chocolatey](https://chocolatey.org/install).
+    - Ejecuta el siguiente comando para instalar `make`:
+      ```shell
+      choco install make
+      ```
+
+**Opcional** (Requisito para usar `make` en Ubuntu):
+
+- **Make (Opcional)**: Para automatizar la construcción y ejecución de la aplicación con los comandos definidos en el archivo Makefile. Puedes instalar `make` en Ubuntu siguiendo estos pasos:
+    - Abre una terminal en tu sistema Ubuntu.
+    - Ejecuta el siguiente comando para actualizar la lista de paquetes disponibles:
+      ```shell
+      sudo apt update
+      ```
+    - Una vez que se complete la actualización, puedes instalar `make` con el siguiente comando:
+      ```shell
+      sudo apt install make
+      ```
+
+## Endpoints Disponibles
+
+La aplicación ofrece los siguientes endpoints para la gestión de usuarios y la autenticación:
+
+- **Registro de Usuario (POST)**:
+    - Ruta: `/api/auth/signup`
+    - Cuerpo (Body):
+        ```json
+        {
+            "email": "tu-email@example.com",
+            "password": "tu-contraseña",
+            "name": "Tu Nombre",
+            "lastName": "Tu Apellido"
+        }
+        ```
+
+- **Inicio de Sesión (POST)**:
+    - Ruta: `/api/auth/signin`
+    - Cuerpo (Body):
+        ```json
+        {
+            "email": "tu-email@example.com",
+            "password": "tu-contraseña"
+        }
+        ```
+
+- **Obtener Todos los Usuarios (GET)**:
+    - Ruta: `/api/users`
+    - Requiere un Token JWT en el encabezado de autorización (Bearer Token).
+
+- **Obtener Tu Propio Usuario (GET)**:
+    - Ruta: `/api/users/me`
+    - Requiere un Token JWT en el encabezado de autorización (Bearer Token).
+
 ## Pasos para Levantar el Proyecto
 
-Sigue estos pasos para dockerizar la aplicación Spring Boot y ejecutarla con JWT:
+Sigue estos pasos para levantar la aplicación Spring Boot y ejecutarla:
 
-1. **Descargar el Proyecto**:
-   - Clona o descarga el proyecto desde el repositorio.
+**Empaquetar la Aplicación Usando Make**:
+   Si tienes `make` instalado, puedes correr la aplicación con el siguiente comando en la terminal:
 
-2. **Abrir el Proyecto**:
-   - Abre el proyecto en tu IDE preferido.
+   ```shell
+   make run
+   ```
+**Empaquetar la Aplicación Manualmente**:
+  ```shell
+  ./mvnw clean package -DskipTests
+  ```
 
-3. **Compilar el Proyecto**:
-   - Abre una terminal en la carpeta raíz del proyecto.
-   - Ejecuta el siguiente comando para compilar el proyecto y generar el paquete:
-     ```shell
-     ./mvnw clean package -DskipTests
-     ```
+  ```shell
+  docker-compose build
+  ```
 
-4. **Construir la Imagen Docker**:
-   - Asegúrate de que Docker esté en funcionamiento.
-   - En la terminal, ejecuta el siguiente comando para construir la imagen Docker:
-     ```shell
-     docker-compose build
-     ```
+  ```shell
+  docker-compose up
+  ```
 
-5. **Ejecutar la Aplicación en un Contenedor Docker**:
-   - Una vez que se complete la construcción de la imagen, ejecuta el siguiente comando para iniciar la aplicación en un contenedor:
-     ```shell
-     docker-compose up
-     ```
-
-6. **Probar la API con Postman**:
-   - Abre Postman y utiliza las siguientes rutas para probar la API:
-
-     - Obtener todos los usuarios (GET):
-       ```
-       http://localhost:8080/api/users
-       ```
-
-     - Obtener un usuario (GET):
-       ```
-       http://localhost:8080/api/users/{id}
-       ```
-
-     - Crear un usuario (POST):
-       ```
-       http://localhost:8080/api/users
-       ```
-
-     **Cuerpo (Body)**:
-     ```json
-     {
-       "name": "John Doe"
-     }
-     ```
-
-## Notas Adicionales
-
-- Asegúrate de que el contenedor de Docker esté en funcionamiento antes de probar la API.
+Asegúrate de estar en el directorio raíz de tu proyecto Spring Boot al ejecutar estos comandos. Con estos comandos, podrás automatizar fácilmente la construcción y ejecución de tu aplicación Dockerizada.
