@@ -16,6 +16,7 @@ Asegúrate de tener los siguientes requisitos instalados en tu sistema:
 - **Make (Opcional)**: Para automatizar la construcción y ejecución de la aplicación con los comandos definidos en el archivo Makefile. Puedes instalar `make` en Windows siguiendo estos pasos:
     - Instala el administrador de paquetes Chocolatey para Windows: [Instrucciones de instalación de Chocolatey](https://chocolatey.org/install).
     - Ejecuta el siguiente comando para instalar `make`:
+      
       ```shell
       choco install make
       ```
@@ -25,10 +26,13 @@ Asegúrate de tener los siguientes requisitos instalados en tu sistema:
 - **Make (Opcional)**: Para automatizar la construcción y ejecución de la aplicación con los comandos definidos en el archivo Makefile. Puedes instalar `make` en Ubuntu siguiendo estos pasos:
     - Abre una terminal en tu sistema Ubuntu.
     - Ejecuta el siguiente comando para actualizar la lista de paquetes disponibles:
+      
       ```shell
       sudo apt update
       ```
+      
     - Una vez que se complete la actualización, puedes instalar `make` con el siguiente comando:
+
       ```shell
       sudo apt install make
       ```
@@ -40,7 +44,8 @@ La aplicación ofrece los siguientes endpoints para la gestión de usuarios y la
 - **Registro de Usuario (POST)**:
     - Ruta: `/api/auth/signup`
     - Cuerpo (Body):
-        ```json
+
+      ```json
         {
             "email": "tu-email@example.com",
             "password": "tu-contraseña",
@@ -52,12 +57,13 @@ La aplicación ofrece los siguientes endpoints para la gestión de usuarios y la
 - **Inicio de Sesión (POST)**:
     - Ruta: `/api/auth/signin`
     - Cuerpo (Body):
-        ```json
+
+      ```json
         {
             "email": "tu-email@example.com",
             "password": "tu-contraseña"
         }
-        ```
+      ```
 
 - **Obtener Todos los Usuarios (GET)**:
     - Ruta: `/api/users`
@@ -77,7 +83,9 @@ Sigue estos pasos para levantar la aplicación Spring Boot y ejecutarla:
    ```shell
    make run
    ```
+
 **Correr la aplicación manualmente**:
+  
   ```shell
   ./mvnw clean package -DskipTests
   ```
