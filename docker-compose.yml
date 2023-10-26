@@ -14,6 +14,11 @@ services:
       # The secret key must be an HMAC hash string of 256 bits; otherwise, the token generation will throw an error.
       - JWT_SECRET_KEY=3cfa76ef14937c1c0ea519f8fc057a80fcd04a7420f8e8bcd0a7567c272e007b
       - JWT_EXPIRATION=43200000
+      # Bootstrap admin information
+      - ADMIN_EMAIL=admin@gmail.com
+      - ADMIN_PASSWORD=admin
+      - ADMIN_NAME=Super
+      - ADMIN_LASTNAME=Admin
     depends_on:
       - java-bootcamp-db
   java-bootcamp-db:
